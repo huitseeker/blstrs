@@ -105,3 +105,9 @@ fn u64_to_u32(limbs: &[u64]) -> Vec<u32> {
 fn bls12_engine_tests() {
     crate::tests::engine::engine_tests::<Bls12>();
 }
+
+#[cfg(feature = "gpu")]
+impl ec_gpu::GpuEngine for Bls12 {
+    type Scalar = Scalar;
+    type Fp = crate::fp::Fp;
+}
